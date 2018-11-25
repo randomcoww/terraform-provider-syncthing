@@ -2,10 +2,10 @@ package main
 
 import (
 	"github.com/hashicorp/terraform/plugin"
-	"github.com/randomcoww/terraform-provider-syncthingdevice/syncthingdevice"
+	"github.com/randomcoww/terraform-provider-syncthing/syncthing"
 )
 
 func main() {
 	plugin.Serve(&plugin.ServeOpts{
-		ProviderFunc: syncthingdevice.Provider})
+		ProviderFunc: syncthing.Provider})
 }

@@ -1,4 +1,4 @@
-package syncthingdevice
+package syncthing
 
 import (
 	"github.com/hashicorp/terraform/helper/schema"
@@ -8,7 +8,7 @@ import (
 func Provider() terraform.ResourceProvider {
 	return &schema.Provider{
 		DataSourcesMap: map[string]*schema.Resource{
-			"device": dataSourceDevice(),
+			"syncthing_device": dataSourceDevice(),
 		},
 	}
 }

@@ -1,4 +1,4 @@
-package syncthingdevice
+package syncthing
 
 import (
 	"crypto/tls"
