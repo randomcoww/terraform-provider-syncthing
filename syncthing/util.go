@@ -1,7 +1,7 @@
 package syncthing
 
 import (
-	"crypto/tls"
+	 "crypto/tls"
 	"fmt"
 
 	"github.com/hashicorp/terraform/helper/schema"
@@ -14,6 +14,8 @@ func readCertPair(d *schema.ResourceData, certPEM, privateKeyPEM []byte) error {
 		return fmt.Errorf("Failed to load keypair: %s", err)
 	}
 
-	d.Set("device_id", protocol.NewDeviceID(cert.Certificate[0]).String())
+	deviceID := protocol.NewDeviceID(cert.Certificate[0]).String()
+	d.SetId(deviceID)
+	d.Set("device_id", deviceID)
 	return nil
 }
