@@ -47,5 +47,5 @@ data "syncthing_device" "test" {
 
 Use device ID in variable
 ```
-deviceID = "${data.syncthing_device.test.device_id}"
+device_id = "${data.syncthing_device.test.device_id}"
 ```
