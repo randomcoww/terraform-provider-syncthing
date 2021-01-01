@@ -39,7 +39,7 @@ resource "tls_locally_signed_cert" "test" {
 
 Call data source
 ```
-data "syncthing_device" "test" {
+data "syncthing" "test" {
   cert_pem        = "${tls_locally_signed_cert.test.cert_pem}"
   private_key_pem = "${tls_private_key.test.private_key_pem}"
 }
@@ -47,5 +47,5 @@ data "syncthing_device" "test" {
 
 Use device ID in variable
 ```
-device_id = "${data.syncthing_device.test.device_id}"
+device_id = "${data.syncthing.test.device_id}"
 ```

@@ -1,7 +1,7 @@
 package syncthing
 
 import (
-	 "crypto/tls"
+	"crypto/tls"
 	"fmt"
 
 	"github.com/hashicorp/terraform/helper/schema"

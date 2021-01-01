@@ -8,7 +8,7 @@ import (
 func Provider() terraform.ResourceProvider {
 	return &schema.Provider{
 		DataSourcesMap: map[string]*schema.Resource{
-			"syncthing_device": dataSourceDevice(),
+			"syncthing": dataSourceDevice(),
 		},
 	}
 }

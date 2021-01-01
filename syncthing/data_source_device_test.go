@@ -35,7 +35,7 @@ func TestAccDeviceID_dataSource(t *testing.T) {
 			resource.TestStep{
 				Config: fmt.Sprintf(testAccDataSourceDeviceIDConfig, inputCertPEM, inputKeyPEM),
 				Check: resource.ComposeTestCheckFunc(
-					resource.TestCheckResourceAttr("data.syncthing_device.test", "device_id", strings.TrimSpace(expectedDeviceID)),
+					resource.TestCheckResourceAttr("data.syncthing.test", "device_id", strings.TrimSpace(expectedDeviceID)),
 				),
 			},
 		},
@@ -43,7 +43,7 @@ func TestAccDeviceID_dataSource(t *testing.T) {
 }
 
 const testAccDataSourceDeviceIDConfig = `
-data "syncthing_device" "test" {
+data "syncthing" "test" {
   cert_pem = <<EOF
 %s
 EOF
