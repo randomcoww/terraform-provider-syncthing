@@ -1,5 +1,5 @@
 data "syncthing_device" "example" {
-  cert_pem = <<EOF
+  cert_pem        = <<EOF
 -----BEGIN CERTIFICATE-----
 MIIBhTCCASugAwIBAgIQIRi6zePL6mKjOipn+dNuaTAKBggqhkjOPQQDAjASMRAw
 DgYDVQQKEwdBY21lIENvMB4XDTE3MTAyMDE5NDMwNloXDTE4MTAyMDE5NDMwNlow
