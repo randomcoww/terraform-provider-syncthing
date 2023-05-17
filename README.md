@@ -45,7 +45,52 @@ Then commit the changes to `go.mod` and `go.sum`.
 
 ## Using the provider
 
-Fill this in for each provider
+### Generate certs
+
+Common name should be `syncthing` to avoid needing to specify it in Syncthing configuration
+
+```shell
+resource "tls_private_key" "test" {
+  algorithm   = "ECDSA"
+  ecdsa_curve = "P384"
+}
+
+resource "tls_cert_request" "test" {
+  key_algorithm   = tls_private_key.test.algorithm
+  private_key_pem = tls_private_key.test.private_key_pem
+
+  subject {
+    common_name = "syncthing"
+  }
+}
+
+resource "tls_locally_signed_cert" "test" {
+  cert_request_pem   = tls_cert_request.test.cert_request_pem
+  ca_key_algorithm   = tls_private_key.root.algorithm
+  ca_private_key_pem = tls_private_key.root.private_key_pem
+  ca_cert_pem        = tls_self_signed_cert.root.cert_pem
+
+  validity_period_hours = 8760
+
+  allowed_uses = [
+    "key_encipherment",
+    "digital_signature",
+    "server_auth",
+    "client_auth",
+  ]
+}
+```
+
+### Generate Syncthing device ID from certs
+
+```shell
+data "syncthing" "test" {
+  cert_pem        = tls_locally_signed_cert.test.cert_pem
+  private_key_pem = tls_private_key.test.private_key_pem
+}
+
+device_id = data.syncthing.test.device_id
+```
 
 ## Developing the Provider
 
