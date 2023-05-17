@@ -45,7 +45,7 @@ Then commit the changes to `go.mod` and `go.sum`.
 
 ## Using the provider
 
-### Generate certs
+#### Generate certs
 
 Common name should be `syncthing` to avoid needing to specify it in Syncthing configuration
 
@@ -81,7 +81,7 @@ resource "tls_locally_signed_cert" "test" {
 }
 ```
 
-### Generate Syncthing device ID from certs
+#### Generate Syncthing device ID from certs
 
 ```shell
 data "syncthing" "test" {
@@ -89,7 +89,7 @@ data "syncthing" "test" {
   private_key_pem = tls_private_key.test.private_key_pem
 }
 
-device_id = data.syncthing.test.device_id
+device_id = data.syncthing.test.id
 ```
 
 ## Developing the Provider
