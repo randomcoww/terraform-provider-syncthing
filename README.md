@@ -84,12 +84,12 @@ resource "tls_locally_signed_cert" "test" {
 #### Generate Syncthing device ID from certs
 
 ```shell
-data "syncthing" "test" {
+data "syncthing_device" "test" {
   cert_pem        = tls_locally_signed_cert.test.cert_pem
   private_key_pem = tls_private_key.test.private_key_pem
 }
 
-device_id = data.syncthing.test.id
+device_id = data.syncthing_device.test.id
 ```
 
 ## Developing the Provider
