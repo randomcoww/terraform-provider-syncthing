@@ -23,5 +23,3 @@ Syncthing device ID data source
 ### Read-Only
 
 - `id` (String) Device ID
-
-
