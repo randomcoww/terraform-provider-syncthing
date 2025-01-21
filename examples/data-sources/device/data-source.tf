@@ -1,3 +1,5 @@
+# Copyright (c) HashiCorp, Inc.
+
 data "syncthing_device" "example" {
   cert_pem        = <<EOF
 -----BEGIN CERTIFICATE-----
